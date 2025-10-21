@@ -1,0 +1,91 @@
+/* クリップボタンのスタイル */
+.clip-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.clip-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.clip-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.clip-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clip-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.clip-button.playing {
+  animation: pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+  }
+}
+
+.play-icon {
+  font-size: 1.2rem;
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.clip-text {
+  flex: 1;
+}
+
+/* クリップタグのスタイル */
+.clip-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #f0f0f0;
+  color: #666;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .clip-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .play-icon {
+    font-size: 1rem;
+  }
+}

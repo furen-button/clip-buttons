@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ClipsProvider } from './contexts/ClipsContext';
+import { ClipsList } from './components/ClipsList';
+import './App.css';
 
+/**
+ * App
+ * メインアプリケーションコンポーネント
+ * 
+ * ClipsProvider でラップして、sampleAssets のパスをカスタマイズ可能にしています。
+ * 将来的に、basePath をプロップやURLパラメータから取得することで、
+ * 複数のアセットディレクトリに対応できます。
+ */
 function App() {
-  const [count, setCount] = useState(0)
+  // sampleAssets のベースパス（カスタマイズ可能）
+  const CLIPS_BASE_PATH = '/sampleAssets';
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ClipsProvider basePath={CLIPS_BASE_PATH}>
+      <div className="app-container">
+        <header className="app-header">
+          <h1>🎵 クリップボタン</h1>
+          <p>再生ボタンをクリックして、音声を再生してください</p>
+        </header>
+        <main className="app-main">
+          <ClipsList />
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </ClipsProvider>
+  );
 }
 
-export default App
+export default App;

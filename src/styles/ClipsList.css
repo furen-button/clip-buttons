@@ -1,3 +1,9 @@
+/* クリップコンテナ */
+.clips-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* クリップリストのスタイル */
 .clips-list {
   display: flex;
@@ -33,6 +39,14 @@
   animation: spin 0.8s linear infinite;
 }
 
+/* クリップ件数表示 */
+.clips-count {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #999;
+  font-weight: 500;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -42,5 +56,9 @@
 @media (max-width: 600px) {
   .clips-list {
     gap: 0.75rem;
+  }
+
+  .clips-count {
+    font-size: 0.85rem;
   }
 }

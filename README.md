@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# clip-buttons 🎵
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+clips.json を使用して、音声再生ボタンを配置するReactサイトです。タグフィルタリング、レスポンシブデザイン、情報モーダル、ソート機能を備えています。
 
-Currently, two official plugins are available:
+## 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📁 **clips.json データ読み込み**: JSON形式の音声クリップデータを自動解析
+- 🎵 **音声再生**: Web Audio APIを使用した軽量な再生機能
+- 🏷️ **タグフィルタリング**: マルチセレクト対応のタグベースフィルタリング
+- 📱 **レスポンシブデザイン**: PC/スマホ両対応（3段階ブレークポイント）
+- ℹ️ **情報モーダル**: クリップ詳細、タグ、ダウンロードリンク表示
+- 🔤 **ソート機能**: テキスト順/読み方順での並べ替え
 
-## React Compiler
+## 技術スタック
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** - UIフレームワーク
+- **TypeScript** - 型安全性
+- **Vite** - ビルドツール
+- **CSS Grid** - レスポンシブレイアウト
+- **Web Audio API** - ネイティブオーディオ再生
 
-## Expanding the ESLint configuration
+## インストール
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 開発
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Vite開発サーバーが起動し、HMR（Hot Module Replacement）が有効になります。
+
+## ビルド
+
+```bash
+npm run build
+```
+
+本番用にアプリケーションをビルドします。
+
+## コード品質チェック
+
+```bash
+npm run lint
+```
+
+ESLintで静的解析を実施します。
+
+## プロジェクト構成
+
+```
+src/
+├── App.tsx                 # ルートコンポーネント
+├── App.css                 # グローバルレイアウト
+├── components/
+│   ├── ClipButton.tsx      # 再生ボタン + 情報ボタン
+│   ├── ClipsList.tsx       # グリッド、フィルター、ソート
+│   ├── TagFilter.tsx       # タグ選択UI
+│   └── InfoModal.tsx       # クリップ詳細モーダル
+├── contexts/
+│   ├── ClipsContext.tsx    # ContextProvider
+│   └── clipsContextValue.ts # Context定義
+├── hooks/
+│   └── useClips.ts         # カスタムフック
+├── types/
+│   └── clip.ts             # 型定義
+└── styles/
+    ├── ClipButton.css
+    ├── ClipsList.css
+    ├── TagFilter.css
+    └── InfoModal.css
+```
+
+## レスポンシブブレークポイント
+
+| デバイス | 幅 | グリッド列幅 | レイアウト |
+|---------|-----|----------|---------|
+| PC | 1024px+ | 140px | 横並びヘッダー |
+| タブレット | 601-1023px | 130px | 縦並びヘッダー |
+| スマホ | 600px以下 | 100px | 縦並びヘッダー |
+
+## データ形式
+
+`clips.json` の形式:
+
+```json
+{
+  "clips": [
+    {
+      "id": "1",
+      "text": "クリップ名",
+      "ruby": "よみかた",
+      "tags": ["tag1", "tag2"],
+      "soundPath": "sounds/clip.mp3"
+    }
+  ]
+}
+```
+
+## ライセンス
+
+MIT

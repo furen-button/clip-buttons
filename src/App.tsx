@@ -12,7 +12,7 @@ import './App.css';
  */
 function App() {
   // sampleAssets のベースパス（カスタマイズ可能）
-  const CLIPS_BASE_PATH = '/sampleAssets';
+  const CLIPS_BASE_PATH = 'sampleAssets';
 
   return (
     <ClipsProvider basePath={CLIPS_BASE_PATH}>

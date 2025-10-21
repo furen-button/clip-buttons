@@ -1,15 +1,5 @@
-import { createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
-
-/**
- * ClipsContext
- * sampleAssets のベースパスを管理するContext
- */
-interface ClipsContextType {
-  basePath: string;
-}
-
-const ClipsContext = createContext<ClipsContextType | undefined>(undefined);
+import { ClipsContext } from './clipsContextValue';
 
 interface ClipsProviderProps {
   children: ReactNode;
@@ -27,16 +17,4 @@ export function ClipsProvider({ children, basePath = '/sampleAssets' }: ClipsPro
       {children}
     </ClipsContext.Provider>
   );
-}
-
-/**
- * useClips
- * ClipsContext を使用するカスタムHook
- */
-export function useClips() {
-  const context = useContext(ClipsContext);
-  if (context === undefined) {
-    throw new Error('useClips must be used within a ClipsProvider');
-  }
-  return context;
 }

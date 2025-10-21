@@ -4,48 +4,117 @@
 }
 
 .app-container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .app-header h1 {
-  font-size: 2.5rem;
-  margin: 0 0 0.5rem 0;
+  font-size: 2.8rem;
+  margin: 0 0 0.6rem 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 .app-header p {
   color: #666;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin: 0;
+  font-weight: 400;
 }
 
 .app-main {
   background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-@media (max-width: 600px) {
+/* PC用 (1024px以上) */
+@media (min-width: 1024px) {
   .app-container {
-    padding: 1rem;
+    max-width: 1400px;
+    padding: 2.5rem 2rem;
+    gap: 2rem;
   }
 
   .app-header h1 {
-    font-size: 1.8rem;
+    font-size: 3.2rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.8rem;
+  }
+
+  .app-header p {
+    font-size: 1.05rem;
   }
 
   .app-main {
-    padding: 1.5rem;
+    padding: 3rem;
+    border-radius: 16px;
+  }
+}
+
+/* タブレット用 (601px - 1023px) */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .app-container {
+    max-width: 100%;
+    padding: 1.8rem 1.5rem;
+    gap: 1.3rem;
+  }
+
+  .app-header h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .app-header p {
+    font-size: 0.95rem;
+  }
+
+  .app-main {
+    padding: 2rem;
+    border-radius: 12px;
+  }
+}
+
+/* モバイル用 (600px以下) */
+@media (max-width: 600px) {
+  .app-container {
+    max-width: 100%;
+    padding: 1rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .app-header {
+    margin-bottom: 0.3rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+  }
+
+  .app-main {
+    padding: 1.2rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 }

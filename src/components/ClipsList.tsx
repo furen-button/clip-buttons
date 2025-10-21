@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Clip } from '../types/clip';
-import { useClips } from '../contexts/ClipsContext';
+import { useClips } from '../hooks/useClips';
 import { ClipButton } from './ClipButton';
 import { TagFilter } from './TagFilter';
 import '../styles/ClipsList.css';
@@ -114,9 +114,11 @@ export function ClipsList() {
             <div className="clips-count">
               {filteredClips.length} / {clips.length} 件
             </div>
-            {filteredClips.map((clip, index) => (
-              <ClipButton key={index} clip={clip} />
-            ))}
+            <div className="clips-grid">
+              {filteredClips.map((clip, index) => (
+                <ClipButton key={index} clip={clip} />
+              ))}
+            </div>
           </>
         )}
       </div>

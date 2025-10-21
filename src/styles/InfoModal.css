@@ -1,0 +1,303 @@
+/* 情報モーダルのスタイル */
+
+/* モーダルオーバーレイ */
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  padding: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* モーダルコンテナ */
+.info-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* モーダルヘッダー */
+.info-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px 16px 0 0;
+  color: white;
+}
+
+.info-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex: 1;
+  word-break: break-word;
+}
+
+/* モーダルクローズボタン */
+.info-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* モーダルボディ */
+.info-modal-body {
+  padding: 2rem;
+}
+
+/* 情報セクション */
+.info-section {
+  margin-bottom: 2rem;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
+}
+
+.info-section h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.info-section h3::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+}
+
+/* 読み方 */
+.info-ruby {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  background-color: #f5f7ff;
+  border-left: 4px solid #667eea;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* タグ */
+.info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.info-tag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.info-empty {
+  margin: 0;
+  color: #999;
+  font-style: italic;
+}
+
+/* ファイル情報 */
+.info-file {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.info-filename {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  word-break: break-all;
+}
+
+.info-filename strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.info-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.info-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* モーダルフッター */
+.info-modal-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info-modal-close-btn {
+  padding: 0.7rem 1.8rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.info-modal-close-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.info-modal-close-btn:active {
+  transform: translateY(0);
+}
+
+/* タブレット・スマホ対応 */
+@media (max-width: 768px) {
+  .info-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .info-modal {
+    border-radius: 12px;
+    max-height: 90vh;
+  }
+
+  .info-modal-header {
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .info-modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .info-modal-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+  }
+
+  .info-modal-body {
+    padding: 1.5rem;
+  }
+
+  .info-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .info-section h3 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .info-ruby {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .info-tag {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .info-filename {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .info-download-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .info-modal-footer {
+    padding: 1rem 1.5rem;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .info-modal-close-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

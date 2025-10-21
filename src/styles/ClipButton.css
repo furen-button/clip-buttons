@@ -2,39 +2,43 @@
 .clip-button-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.3rem;
+  position: relative;
 }
 
 .clip-button {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.8rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+  text-align: center;
+  min-height: 70px;
+  width: 100%;
 }
 
 .clip-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .clip-button:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
 }
 
 .clip-button:disabled {
-  opacity: 0.7;
+  opacity: 0.65;
   cursor: not-allowed;
 }
 
@@ -44,48 +48,167 @@
 
 @keyframes pulse {
   0%, 100% {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
   }
   50% {
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
   }
 }
 
 .play-icon {
-  font-size: 1.2rem;
-  display: inline-block;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 1.5rem;
-  text-align: center;
+  min-height: 1.5rem;
 }
 
 .clip-text {
+  word-break: break-word;
+  line-height: 1.2;
   flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* 情報ボタン */
+.clip-info-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clip-info-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+}
+
+.clip-info-btn:active {
+  transform: scale(1.05);
 }
 
 /* クリップタグのスタイル */
 .clip-tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  display: none;
 }
 
 .tag {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #f0f0f0;
-  color: #666;
-  border-radius: 12px;
+  padding: 0.3rem 0.7rem;
+  background-color: #f0f2f5;
+  color: #667eea;
+  border-radius: 16px;
   font-size: 0.75rem;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-@media (max-width: 600px) {
+.tag:hover {
+  background-color: #e8ecff;
+}
+
+/* PC用 (1024px以上) */
+@media (min-width: 1024px) {
+  .clip-button-container {
+    gap: 0.35rem;
+  }
+
   .clip-button {
-    padding: 0.75rem 1rem;
+    padding: 0.8rem 1rem;
     font-size: 0.9rem;
+    min-height: 80px;
+  }
+
+  .clip-info-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+    top: -10px;
+    right: -10px;
   }
 
   .play-icon {
-    font-size: 1rem;
+    font-size: 1.6rem;
+    min-width: 1.6rem;
+    min-height: 1.6rem;
+  }
+}
+
+/* タブレット用 (601px - 1023px) */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .clip-button-container {
+    gap: 0.32rem;
+  }
+
+  .clip-button {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+    min-height: 72px;
+  }
+
+  .clip-info-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.25rem;
+    top: -8px;
+    right: -8px;
+  }
+
+  .play-icon {
+    font-size: 1.4rem;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
+  }
+}
+
+/* モバイル用 (600px以下) */
+@media (max-width: 600px) {
+  .clip-button-container {
+    gap: 0.28rem;
+  }
+
+  .clip-button {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.8rem;
+    min-height: 64px;
+    border-radius: 8px;
+  }
+
+  .clip-button:hover:not(:disabled) {
+    transform: translateY(-1.5px);
+  }
+
+  .clip-info-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 1.1rem;
+    top: -6px;
+    right: -6px;
+  }
+
+  .play-icon {
+    font-size: 1.3rem;
+    min-width: 1.3rem;
+    min-height: 1.3rem;
+  }
+
+  .clip-text {
+    font-size: 0.75rem;
   }
 }

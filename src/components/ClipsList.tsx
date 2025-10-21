@@ -14,6 +14,7 @@ export function ClipsList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [sortBy, setSortBy] = useState<'text' | 'ruby'>('ruby');
   const { basePath } = useClips();
 
   useEffect(() => {
@@ -84,6 +85,15 @@ export function ClipsList() {
         clip.tags.some(tag => selectedTags.has(tag))
       );
 
+  /**
+   * フィルタ済みクリップをソート
+   */
+  const sortedAndFilteredClips = [...filteredClips].sort((a, b) => {
+    const aValue = sortBy === 'text' ? a.text : a.ruby;
+    const bValue = sortBy === 'text' ? b.text : b.ruby;
+    return aValue.localeCompare(bValue, 'ja');
+  });
+
   if (loading) {
     return <div className="clips-list loading">読み込み中...</div>;
   }
@@ -111,11 +121,25 @@ export function ClipsList() {
           </div>
         ) : (
           <>
-            <div className="clips-count">
-              {filteredClips.length} / {clips.length} 件
+            <div className="clips-header">
+              <div className="clips-count">
+                {sortedAndFilteredClips.length} / {clips.length} 件
+              </div>
+              <div className="clips-sort">
+                <label htmlFor="sort-select">ソート:</label>
+                <select
+                  id="sort-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'text' | 'ruby')}
+                  className="sort-select"
+                >
+                  <option value="text">テキスト順</option>
+                  <option value="ruby">読み方順</option>
+                </select>
+              </div>
             </div>
             <div className="clips-grid">
-              {filteredClips.map((clip, index) => (
+              {sortedAndFilteredClips.map((clip, index) => (
                 <ClipButton key={index} clip={clip} />
               ))}
             </div>

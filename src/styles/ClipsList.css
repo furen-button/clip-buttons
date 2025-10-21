@@ -11,6 +11,15 @@
   gap: 1rem;
 }
 
+/* クリップヘッダー */
+.clips-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
 /* クリップグリッド */
 .clips-grid {
   display: grid;
@@ -56,6 +65,42 @@
   font-weight: 500;
 }
 
+/* ソートコントロール */
+.clips-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.clips-sort label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.sort-select {
+  padding: 0.5rem 0.8rem;
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.sort-select:hover {
+  border-color: #667eea;
+  background-color: #f5f7ff;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -64,6 +109,12 @@
 
 /* PC用 (1024px以上) */
 @media (min-width: 1024px) {
+  .clips-header {
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
   .clips-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 1rem;
@@ -81,10 +132,21 @@
     padding: 0.6rem 0;
     font-size: 0.9rem;
   }
+
+  .sort-select {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 /* タブレット用 (601px - 1023px) */
 @media (min-width: 601px) and (max-width: 1023px) {
+  .clips-header {
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   .clips-grid {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 0.9rem;
@@ -101,10 +163,21 @@
     padding: 0.4rem 0;
     font-size: 0.85rem;
   }
+
+  .sort-select {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* モバイル用 (600px以下) */
 @media (max-width: 600px) {
+  .clips-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
   .clips-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 0.65rem;
@@ -128,5 +201,19 @@
   .clips-count {
     padding: 0.35rem 0;
     font-size: 0.75rem;
+  }
+
+  .clips-sort {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .clips-sort label {
+    font-size: 0.8rem;
+  }
+
+  .sort-select {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.8rem;
   }
 }
